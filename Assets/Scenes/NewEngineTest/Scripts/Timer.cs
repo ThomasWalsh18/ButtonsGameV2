@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour
     void Start()
     {
         GameManger.current.timerComplete += CompleteTimer;
+        GameManger.current.pausePlayTimerEvent += stopOrStartTimer;
+
         timer = gameObject.GetComponent<Slider>();
         timer.maxValue = totalTime;
     }
@@ -38,6 +40,10 @@ public class Timer : MonoBehaviour
         }
     }
 
+    private void stopOrStartTimer(bool action)
+    {
+        count = action; 
+    }
     private void CompleteTimer()
     {
         print("Timer Complete");

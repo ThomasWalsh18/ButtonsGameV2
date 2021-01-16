@@ -16,8 +16,10 @@ public class GameManger : MonoBehaviour
     {
         current = this;
     }
-
+    
+    //Timer Events
     public event Action timerComplete;
+    public event Action<bool> pausePlayTimerEvent;
     public void outOfTime()
     {
         if (timerComplete != null)
@@ -25,5 +27,31 @@ public class GameManger : MonoBehaviour
             timerComplete();
         }
     }
+    public void pauseOrPlayTimer(bool play) 
+    {
+        if (pausePlayTimerEvent != null)
+        {
+            pausePlayTimerEvent(play);
+        }
+    }
 
+
+    //Row Events
+    public event Action<int> revealNextRowEvent;
+    public event Action hideAllRowsEvent;
+
+    public void nextRow(int id)
+    {
+        if(revealNextRowEvent != null)
+        {
+            revealNextRowEvent(id);
+        }
+    } 
+    public void hideAllRows()
+    {
+        if(hideAllRowsEvent != null)
+        {
+            hideAllRowsEvent();
+        }
+    }
 }
