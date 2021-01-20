@@ -16,7 +16,7 @@ public class GameManger : MonoBehaviour
     {
         current = this;
     }
-    
+
     //Timer Events
     public event Action timerComplete;
     public event Action<bool> pausePlayTimerEvent;
@@ -27,7 +27,7 @@ public class GameManger : MonoBehaviour
             timerComplete();
         }
     }
-    public void pauseOrPlayTimer(bool play) 
+    public void pauseOrPlayTimer(bool play)
     {
         if (pausePlayTimerEvent != null)
         {
@@ -42,16 +42,37 @@ public class GameManger : MonoBehaviour
 
     public void nextRow(int id)
     {
-        if(revealNextRowEvent != null)
+        if (revealNextRowEvent != null)
         {
             revealNextRowEvent(id);
         }
-    } 
+    }
     public void hideAllRows()
     {
-        if(hideAllRowsEvent != null)
+        if (hideAllRowsEvent != null)
         {
             hideAllRowsEvent();
         }
     }
+
+    //Spawn Events
+    public event Action<int> SpawnButtonEvent;
+    public event Action SpawnRowEvent;
+
+    public void SpawnButton(int id)
+    {
+        if (SpawnButtonEvent != null)
+        {
+            SpawnButtonEvent(id);
+        }
+    }
+    public void SpawnRow()
+    {
+        if (SpawnRowEvent != null)
+        {
+            SpawnRowEvent();
+        }
+    }
 }
+
+
