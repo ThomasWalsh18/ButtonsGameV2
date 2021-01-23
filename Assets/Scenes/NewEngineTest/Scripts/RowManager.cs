@@ -17,6 +17,7 @@ public class RowManager : MonoBehaviour
         GameManger.current.hideAllRowsEvent += hideRows;
         GameManger.current.SpawnRowEvent += spawnRows;
         GameManger.current.SpawnButtonEvent += spawnButtons;
+        GameManger.current.fillRowEvent += fillRow;
         Storage = GameObject.FindGameObjectWithTag("Storage");
 
         //Rows = GameObject.FindGameObjectsWithTag("Row");
@@ -55,6 +56,29 @@ public class RowManager : MonoBehaviour
             GameManger.current.SpawnButton(1);
         }
     } 
+
+    private void fillRow(int ammount, int correct)
+    {
+        for(int i= 0; i < ammount; i++)
+        {
+            GameManger.current.SpawnButton(0);
+        }
+        int correctAmmount = 0;
+        //sanity checks
+        if (ammount < 3)
+        {
+            correct = 1;
+        }
+        //Chose two buttons to be correct from the array of buttons
+        ButtonBehaviour[] buttons = Rows[Rows.Count - 1].GetComponentsInChildren<ButtonBehaviour>();
+
+        while (correctAmmount != correct)
+        {
+            int randButton = Random.Range(0, ammount-1);
+            buttons[randButton].correct = true;
+            correctAmmount++;
+        }
+    }
     private void spawnButtons(int id)
     {
         //if its the first row spawn a start button

@@ -19,10 +19,53 @@ public class Spawn : MonoBehaviour
             //Fill a row with buttons if its not the first row
             if (!firstrun)
             {
-                for(int i = 0; i < 7; i++)
+                //random ammount of buttons varying from 1 to 10, below 5 needs to be more rare
+                int ammountChose= Random.Range(1, 100);
+                int ammount = 5; // default 
+                if (ammountChose <= 5)
                 {
-                    GameManger.current.SpawnButton(0);
+                    ammount = 1;
                 }
+                else if (ammountChose <= 10)
+                {
+                    ammount = 2;
+                }
+                else if (ammountChose <= 15)
+                {
+                    ammount = 3;
+                }
+                else if (ammountChose <= 20)
+                {
+                    ammount = 4;
+                }
+                else if (ammountChose <= 40)
+                {
+                    ammount = 5;
+                }
+                else if (ammountChose <= 60)
+                {
+                    ammount = 6;
+                }
+                else if (ammountChose <= 75)
+                {
+                    ammount = 7;
+                }
+                else if (ammountChose <= 85)
+                {
+                    ammount = 8;
+                }
+                else if (ammountChose <= 95)
+                {
+                    ammount = 9;
+                }
+                else if (ammountChose <= 100)
+                {
+                    ammount = 10;
+                }
+                //how many buttons are correct
+                int correct = Random.Range(1, 3);
+                print(correct);
+                GameManger.current.fillTheRow(ammount, correct);
                 //Chose a button to be correct
 
             }else

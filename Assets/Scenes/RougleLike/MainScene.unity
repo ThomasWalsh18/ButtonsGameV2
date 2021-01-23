@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510eb9cc50ec53649a75dd1e1d03b459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currDiff: 1
+  currDiff: 20
 --- !u!1001 &6871250567194437645
 PrefabInstance:
   m_ObjectHideFlags: 0

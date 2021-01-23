@@ -58,7 +58,15 @@ public class GameManger : MonoBehaviour
     //Spawn Events
     public event Action<int> SpawnButtonEvent;
     public event Action SpawnRowEvent;
+    public event Action<int, int> fillRowEvent;
 
+    public void fillTheRow(int ammount, int correct)
+    {
+        if (fillRowEvent != null)
+        {
+            fillRowEvent(ammount, correct);
+        }
+    }
     public void SpawnButton(int id)
     {
         if (SpawnButtonEvent != null)
